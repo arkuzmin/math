@@ -1,0 +1,2 @@
+\select@language {russian}
+\contentsline {section}{\numberline {1.\relax }\IeC {\CYRV }\IeC {\cyrery }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrr }\IeC {\cyra }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyrery }}{1}{section.1}
