@@ -1,4 +1,20 @@
-function [U, N] = getU(l, T, p, t0, Q, c, a, b, sigma, u0, h, tau)
+
+
+function [U, N] = getU()
+    
+    c = 0.5;
+    a = 1;
+    b = 2;
+    sigma = 0.25;
+    u0 = 0.1;
+    l = 1;
+    T = 1;
+    p = 1;
+    h = 0.02;
+    tau = 0.02;
+    t0 = 0.5;
+    Q = 10;
+
     format long;
     function W = W(t) 
         if (0 <= t && t < t0)
@@ -33,7 +49,11 @@ function [U, N] = getU(l, T, p, t0, Q, c, a, b, sigma, u0, h, tau)
         A(1, 1) = -1;
         A(1, 2) =  1;
 
-        F(1) = 0;
+       % F(1) = 0;
+       
+       K0plus = ( K(U(j+1,2)) + K(U(j+1, 1)) ) / 2;
+       F(1) = -W(t(j+1)) * h / K0plus;  
+       
 
         for i = 2 : N - 1
             Kminus = ( K(U(j+1, i - 1)) + K(U(j+1, i)) ) / 2;
@@ -49,7 +69,8 @@ function [U, N] = getU(l, T, p, t0, Q, c, a, b, sigma, u0, h, tau)
         A(N, N-1) = -1;
         A(N, N) = 1;
         Kn_ = ( K(U(j+1, N)) + K(U(j+1, N-1)) ) / 2;
-        F(N) = W(t(j+1)) * h / Kn_;     
+      %  F(N) = W(t(j+1)) * h / Kn_;     
+        F(N) = 0;
         U(j+1, :) = sweep_method(A, F); % A \ F;
     end
     

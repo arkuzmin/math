@@ -5,8 +5,8 @@
 
 \title{ Методы вычислений \\Отчёт по лабораторной работе \textnumero 1 \\  }
 
-\author{Пащенкова А.В.}
-\date{28 апреля 2013}
+\author{Кузьмин А.}
+\date{20 мая 2013}
 
 \begin{document}
 
@@ -33,9 +33,9 @@
 
 \vspace{15em}
 \begin{flushright}
-Пащенкова А.В. \\
-Студентка группы ИУ7-27 \\
-Вариант 7
+Кузьмин А. \\
+Студент группы ИУ7-29 \\
+Вариант 19
 \end{flushright}
 \vspace{\fill}
 \begin{center}
@@ -60,20 +60,21 @@
         \hline
          \(l\) & 1 \\ \hline
          \(\rho\) & 1 \\ \hline
-         \(c\) & 2 \\ \hline
-         \(u_0\) & 0.2 \\ \hline
-         \(a\) & 0.5 \\ \hline
+         \(c\) & 0.5 \\ \hline
+         \(u_0\) & 0.1 \\ \hline
+         \(a\) & 1 \\ \hline
          \(b\) & 2 \\ \hline
-         \(\sigma\) & 1.25 \\ \hline
+         \(\sigma\) & 0.25 \\ \hline
          \(t_0\) & 0.5 \\ \hline
          \(Q\) & 10 \\ \hline
     \end{tabular}
 
 \subsection{Тепловой поток}
-На правом конце стрежня:
-$$W_3(t)=\left\{\begin{array}{lll} 2Q(t_0-t),&0\le t < t_0; \\ 0,&t\ge t_0; \end{array}\right.$$
+На правом конце стрежня тепловой поток равен 0.
 
-На левом конце стрежня тепловой поток равен 0.
+
+На левом конце стрежня:
+$$W_3(t)=\left\{\begin{array}{lll} 2Q(t_0-t),&0\le t < t_0; \\ 0,&t\ge t_0; \end{array}\right.$$
 
 \subsection{Коэффициент теплопроводности}
  \(K(u) = a + bu^\sigma\)
@@ -88,8 +89,8 @@ $$W_3(t)=\left\{\begin{array}{lll} 2Q(t_0-t),&0\le t < t_0; \\ 0,&t\ge t_0; \end
 c\rho \frac{\partial u}{\partial t} = \frac{\partial }{\partial x}\left(K(u)\frac{\partial u}{\partial x}\right),\quad x \in (0;l), \quad t > 0
  & \\
 u(x,0) = u_0 & \\
-\left.K(u)\frac{\partial u}{\partial x}\right |_{x=0} = 0 \\
-\left.K(u)\frac{\partial u}{\partial x}\right |_{x=l} = W_3(t)
+\left.K(u)\frac{\partial u}{\partial x}\right |_{x=0} = W_3(t) \\
+\left.K(u)\frac{\partial u}{\partial x}\right |_{x=l} = 0
 \end{array} 
 \right.
 \end{displaymath}
@@ -137,14 +138,14 @@ c_i = - \alpha{K_{i+}^{j+1}};   \qquad
 
 Граничные условия:
 \begin{equation}
-K_{0+}^{j+1}\frac{u_1^{j+1} - u_0^{j+1}}{h} = 0;  \qquad
-K_{N-}^{j+1}\frac{u_N^{j+1} - u_{N-1}^{j+1}}{h} = W|_{x=l} = W_3(t);
+K_{0+}^{j+1}\frac{u_1^{j+1} - u_0^{j+1}}{h} = W|_{x=l} = W_3(t);  \qquad
+K_{N-}^{j+1}\frac{u_N^{j+1} - u_{N-1}^{j+1}}{h} = 0;
 \end{equation}
 
 Следовательно:
 \begin{equation}
-u_1^{j+1} - u_0^{j+1} = 0;   \qquad
-u_N^{j+1} - u_{N-1}^{j+1} =  \frac{W_3h}{K_{N-}^{j+1}};
+u_1^{j+1} - u_0^{j+1} = \frac{W_3h}{K_{0+}^{j+1}}; \qquad
+u_N^{j+1} - u_{N-1}^{j+1} = 0;
 \end{equation}
 
 \newpage
@@ -163,13 +164,13 @@ a_1 & b_1 & c_1 & 0 & ... & 0 & 0 \\
 \end{array}
 \right)  \qquad
  F = \left( \begin{array}{c}
-0 \\
+\frac{W_3^{j+1}h}{K_{N-}^{j+1}} \\
 f_1 \\
 f_2 \\
 f_3 \\
 ... \\
 f_{N-1} \\
-\frac{W_3^{j+1}h}{K_{N-}^{j+1}} \\
+0 \\
 \end{array}
 \right) 
 \end{displaymath}

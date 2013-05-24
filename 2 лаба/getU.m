@@ -61,17 +61,13 @@ function U = Ufunc(a, h, tau, M, N)
     end;
 
 function y = phi(x)
- %   y = (x + 1) * sin(pi*x / 2);
   y = (x + 0.5) * (x + 1);
 
 function y = psi(x)
-  % y = x*x;
  y = cos(x + 0.5);
    
 function y = mu(t)
- %   y = 0.5*t;
  y = 0.5;
 
 function y = v(t)
- %   y = 2 - t^2;
  y = 3 - 2*t;
