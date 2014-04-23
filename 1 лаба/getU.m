@@ -19,6 +19,7 @@ function [U, N] = getU()
     function W = W(t) 
         if (0 <= t && t < t0)
             W = 2*Q*(t0-t);
+          % W = 2*Q*t;
         else
         if (t >= t0)
             W = 0;
